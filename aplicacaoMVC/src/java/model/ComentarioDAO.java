@@ -106,7 +106,7 @@ public class ComentarioDAO implements Dao<Comentario> {
         ArrayList<Comentario> meusComentarios = new ArrayList();
         Conexao conexao = new Conexao();
         try {
-            String selectSQL = "SELECT * FROM Comentarios";
+            String selectSQL = "SELECT * FROM comentarios";
             PreparedStatement preparedStatement;
             preparedStatement = conexao.getConexao().prepareStatement(selectSQL);
             ResultSet resultado = preparedStatement.executeQuery();

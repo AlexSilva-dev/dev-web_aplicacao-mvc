@@ -11,7 +11,7 @@ public class Conexao {
                 
         try {
             Class.forName("com.mysql.cj.jdbc.Driver"); //load driver  
-            conexao = DriverManager.getConnection("jdbc:mysql://localhost:3306/AlexMatheus", "root", "0101");
+            conexao = DriverManager.getConnection("jdbc:mysql://localhost:3306/AlexMatheus", "AlexMatheus", "");
         } catch (SQLException e) {
             throw new RuntimeException("Nao foi possivel efetuar uma conexao com o BD!");
         } catch (ClassNotFoundException e) {

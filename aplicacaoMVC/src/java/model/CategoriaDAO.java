@@ -26,14 +26,14 @@ public class CategoriaDAO implements Dao<Categoria> {
         Conexao conexao = new Conexao();
         Categoria categoria = new Categoria();
         try {
-            PreparedStatement sql = conexao.getConexao().prepareStatement("SELECT * FROM Categorias WHERE ID = ? ");
+            PreparedStatement sql = conexao.getConexao().prepareStatement("SELECT * FROM categorias WHERE ID = ? ");
             sql.setInt(1, id);
             ResultSet resultado = sql.executeQuery();
 
             if (resultado != null) {
                 while (resultado.next()) {
-                    categoria.setId(Integer.parseInt(resultado.getString("ID")));
-                    categoria.setDescricao(resultado.getString("DESCRICAO"));
+                    categoria.setId(Integer.parseInt(resultado.getString("id")));
+                    categoria.setDescricao(resultado.getString("descricao"));
                 }
             }
         } catch (SQLException e) {
@@ -49,7 +49,7 @@ public class CategoriaDAO implements Dao<Categoria> {
 
         Conexao conexao = new Conexao();
         try {
-            PreparedStatement sql = conexao.getConexao().prepareStatement("INSERT INTO Categorias (descricao) VALUES (?)");
+            PreparedStatement sql = conexao.getConexao().prepareStatement("INSERT INTO categorias (descricao) VALUES (?)");
             sql.setString(1, t.getDescricao());
             sql.executeUpdate();
 
@@ -64,7 +64,7 @@ public class CategoriaDAO implements Dao<Categoria> {
     public void update(Categoria t) {
         Conexao conexao = new Conexao();
         try {
-            PreparedStatement sql = conexao.getConexao().prepareStatement("UPDATE Categorias SET descricao = ?  WHERE ID = ? ");
+            PreparedStatement sql = conexao.getConexao().prepareStatement("UPDATE categorias SET descricao = ?  WHERE ID = ? ");
             sql.setString(1, t.getDescricao());
             sql.setInt(2, t.getId());
             sql.executeUpdate();
@@ -80,7 +80,7 @@ public class CategoriaDAO implements Dao<Categoria> {
     public void delete(int id) {
         Conexao conexao = new Conexao();
         try {
-            PreparedStatement sql = conexao.getConexao().prepareStatement("DELETE FROM Categorias WHERE ID = ? ");
+            PreparedStatement sql = conexao.getConexao().prepareStatement("DELETE FROM categorias WHERE ID = ? ");
             sql.setInt(1, id);
             sql.executeUpdate();
 
@@ -97,15 +97,15 @@ public class CategoriaDAO implements Dao<Categoria> {
         ArrayList<Categoria> meusCategorias = new ArrayList();
         Conexao conexao = new Conexao();
         try {
-            String selectSQL = "SELECT * FROM Categorias";
+            String selectSQL = "SELECT * FROM categorias";
             PreparedStatement preparedStatement;
             preparedStatement = conexao.getConexao().prepareStatement(selectSQL);
             ResultSet resultado = preparedStatement.executeQuery();
             if (resultado != null) {
                 while (resultado.next()) {
                     Categoria Categoria = new Categoria(
-                            resultado.getInt("ID"),
-                            resultado.getString("Descricao")
+                            resultado.getInt("id"),
+                            resultado.getString("descricao")
                     );
                     meusCategorias.add(Categoria);
                 }
