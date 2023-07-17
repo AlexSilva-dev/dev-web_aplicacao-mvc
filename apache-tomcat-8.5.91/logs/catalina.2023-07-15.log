@@ -1,0 +1,59 @@
+15-Jul-2023 17:02:20.117 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version name:   Apache Tomcat/8.5.91
+15-Jul-2023 17:02:20.121 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server built:          Jul 6 2023 14:43:48 UTC
+15-Jul-2023 17:02:20.122 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version number: 8.5.91.0
+15-Jul-2023 17:02:20.122 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Name:               Linux
+15-Jul-2023 17:02:20.122 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Version:            5.19.0-46-generic
+15-Jul-2023 17:02:20.122 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Architecture:          amd64
+15-Jul-2023 17:02:20.122 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Java Home:             /app/jdk
+15-Jul-2023 17:02:20.122 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Version:           11.0.19+7
+15-Jul-2023 17:02:20.123 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Vendor:            Flathub
+15-Jul-2023 17:02:20.123 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:         /home/lek/Development/MyCode/UFF/dev-web_aplicacao-mvc/apache-tomcat-8.5.91
+15-Jul-2023 17:02:20.123 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:         /home/lek/Development/MyCode/UFF/dev-web_aplicacao-mvc/apache-tomcat-8.5.91
+15-Jul-2023 17:02:20.124 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.lang=ALL-UNNAMED
+15-Jul-2023 17:02:20.124 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.io=ALL-UNNAMED
+15-Jul-2023 17:02:20.124 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.util=ALL-UNNAMED
+15-Jul-2023 17:02:20.124 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.util.concurrent=ALL-UNNAMED
+15-Jul-2023 17:02:20.124 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.rmi/sun.rmi.transport=ALL-UNNAMED
+15-Jul-2023 17:02:20.125 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.config.file=/home/lek/Development/MyCode/UFF/dev-web_aplicacao-mvc/apache-tomcat-8.5.91/conf/logging.properties
+15-Jul-2023 17:02:20.125 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+15-Jul-2023 17:02:20.125 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dhttp.nonProxyHosts=localhost|127.0.0.1|Neon
+15-Jul-2023 17:02:20.125 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djdk.tls.ephemeralDHKeySize=2048
+15-Jul-2023 17:02:20.126 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.protocol.handler.pkgs=org.apache.catalina.webresources
+15-Jul-2023 17:02:20.126 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dorg.apache.catalina.security.SecurityListener.UMASK=0027
+15-Jul-2023 17:02:20.126 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dignore.endorsed.dirs=
+15-Jul-2023 17:02:20.126 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.base=/home/lek/Development/MyCode/UFF/dev-web_aplicacao-mvc/apache-tomcat-8.5.91
+15-Jul-2023 17:02:20.126 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.home=/home/lek/Development/MyCode/UFF/dev-web_aplicacao-mvc/apache-tomcat-8.5.91
+15-Jul-2023 17:02:20.126 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.io.tmpdir=/home/lek/Development/MyCode/UFF/dev-web_aplicacao-mvc/apache-tomcat-8.5.91/temp
+15-Jul-2023 17:02:20.126 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent The Apache Tomcat Native library which allows using OpenSSL was not found on the java.library.path: [:/usr/java/packages/lib:/usr/lib64:/lib64:/lib:/usr/lib]
+15-Jul-2023 17:02:20.188 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["http-nio-8080"]
+15-Jul-2023 17:02:20.221 INFO [main] org.apache.catalina.startup.Catalina.load Initialization processed in 852 ms
+15-Jul-2023 17:02:20.316 INFO [main] org.apache.catalina.core.StandardService.startInternal Starting service [Catalina]
+15-Jul-2023 17:02:20.317 INFO [main] org.apache.catalina.core.StandardEngine.startInternal Starting Servlet engine: [Apache Tomcat/8.5.91]
+15-Jul-2023 17:02:20.330 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDescriptor Deploying deployment descriptor [/home/lek/Development/MyCode/UFF/dev-web_aplicacao-mvc/apache-tomcat-8.5.91/conf/Catalina/localhost/aplicacaoMVC.xml]
+15-Jul-2023 17:02:20.909 INFO [localhost-startStop-1] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+15-Jul-2023 17:02:20.944 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDescriptor Deployment of deployment descriptor [/home/lek/Development/MyCode/UFF/dev-web_aplicacao-mvc/apache-tomcat-8.5.91/conf/Catalina/localhost/aplicacaoMVC.xml] has finished in [613] ms
+15-Jul-2023 17:02:20.946 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/home/lek/Development/MyCode/UFF/dev-web_aplicacao-mvc/apache-tomcat-8.5.91/webapps/manager]
+15-Jul-2023 17:02:20.989 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/home/lek/Development/MyCode/UFF/dev-web_aplicacao-mvc/apache-tomcat-8.5.91/webapps/manager] has finished in [43] ms
+15-Jul-2023 17:02:20.990 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/home/lek/Development/MyCode/UFF/dev-web_aplicacao-mvc/apache-tomcat-8.5.91/webapps/host-manager]
+15-Jul-2023 17:02:21.014 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/home/lek/Development/MyCode/UFF/dev-web_aplicacao-mvc/apache-tomcat-8.5.91/webapps/host-manager] has finished in [24] ms
+15-Jul-2023 17:02:21.014 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/home/lek/Development/MyCode/UFF/dev-web_aplicacao-mvc/apache-tomcat-8.5.91/webapps/docs]
+15-Jul-2023 17:02:21.031 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/home/lek/Development/MyCode/UFF/dev-web_aplicacao-mvc/apache-tomcat-8.5.91/webapps/docs] has finished in [17] ms
+15-Jul-2023 17:02:21.031 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/home/lek/Development/MyCode/UFF/dev-web_aplicacao-mvc/apache-tomcat-8.5.91/webapps/examples]
+15-Jul-2023 17:02:21.204 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/home/lek/Development/MyCode/UFF/dev-web_aplicacao-mvc/apache-tomcat-8.5.91/webapps/examples] has finished in [173] ms
+15-Jul-2023 17:02:21.205 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/home/lek/Development/MyCode/UFF/dev-web_aplicacao-mvc/apache-tomcat-8.5.91/webapps/ROOT]
+15-Jul-2023 17:02:21.218 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/home/lek/Development/MyCode/UFF/dev-web_aplicacao-mvc/apache-tomcat-8.5.91/webapps/ROOT] has finished in [13] ms
+15-Jul-2023 17:02:21.221 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["http-nio-8080"]
+15-Jul-2023 17:02:21.233 INFO [main] org.apache.catalina.startup.Catalina.start Server startup in 1011 ms
+15-Jul-2023 21:51:34.849 INFO [main] org.apache.catalina.core.StandardServer.await A valid shutdown command was received via the shutdown port. Stopping the Server instance.
+15-Jul-2023 21:51:34.850 INFO [main] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["http-nio-8080"]
+15-Jul-2023 21:51:34.851 INFO [main] org.apache.catalina.core.StandardService.stopInternal Stopping service [Catalina]
+15-Jul-2023 21:51:34.880 WARNING [localhost-startStop-2] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesJdbc The web application [aplicacaoMVC] registered the JDBC driver [com.mysql.cj.jdbc.Driver] but failed to unregister it when the web application was stopped. To prevent a memory leak, the JDBC Driver has been forcibly unregistered.
+15-Jul-2023 21:51:34.881 WARNING [localhost-startStop-2] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [aplicacaoMVC] appears to have started a thread named [mysql-cj-abandoned-connection-cleanup] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@11.0.19/java.lang.Object.wait(Native Method)
+ java.base@11.0.19/java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:155)
+ com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:91)
+ java.base@11.0.19/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+ java.base@11.0.19/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+ java.base@11.0.19/java.lang.Thread.run(Thread.java:829)
+15-Jul-2023 21:51:34.891 INFO [main] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["http-nio-8080"]
+15-Jul-2023 21:51:34.895 INFO [main] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["http-nio-8080"]

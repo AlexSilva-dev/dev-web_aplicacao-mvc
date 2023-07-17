@@ -11,6 +11,11 @@
         <title>Login</title>
         <link href="http://localhost:8080/aplicacaoMVC/views/bootstrap/bootstrap.min.css"  rel="stylesheet">
     </head>
+    <style>
+        #textarea{
+            resize: none;
+        }
+    </style>
     <body>
         <div class="container">
             <jsp:include page="../comum/menu.jsp" />
@@ -18,6 +23,7 @@
                 <h1>Comentários dos usuários</h1>
 
                 <%
+                    String acao = "";
                     ArrayList<Comentario> listaComentarios = (ArrayList<Comentario>) request.getAttribute("listaComentarios");
                     for (Comentario comentario : listaComentarios) {%>
 
@@ -27,6 +33,22 @@
                     </div>
                 </div>
 
+                    <div class="mt-5">
+                    <form action="ComentarioController" method="POST">
+                        
+                        <div class="mb-3">
+                           <label for="comentario" class="form-label">Escreva seu comentário:</label>
+                           <textarea id="textarea" class="form-control form-control-sm" name="comentario" rows="5" cols="10"></textarea>
+                        </div>
+                        
+                        <div><!-- comment -->
+                            <input class="btn btn-primary" name="btEnviar" type="submit" value="Enviar" onclick="<%System.out.println("oiufodhfdh");%>"
+                        </div>
+                        
+                        
+                    </form>
+
+                </div>
                 <%  }%>
             </div>
         </div>

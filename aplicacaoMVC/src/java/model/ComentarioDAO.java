@@ -34,10 +34,10 @@ public class ComentarioDAO implements Dao<Comentario> {
 
             if (resultado != null) {
                 while (resultado.next()) {
-                    comentario.setId(Integer.parseInt(resultado.getString("ID")));
-                    comentario.setComentario(resultado.getString("COMENTARIO"));
-                    comentario.setData(resultado.getString("DATA"));
-                    comentario.setId(Integer.parseInt(resultado.getString("IDUSUARIO")));
+                    comentario.setId(Integer.parseInt(resultado.getString("id")));
+                    comentario.setComentario(resultado.getString("comentario"));
+                    comentario.setData(resultado.getString("data"));
+                    comentario.setId(Integer.parseInt(resultado.getString("idusuario")));
                 }
             }
             return comentario;
@@ -89,7 +89,7 @@ public class ComentarioDAO implements Dao<Comentario> {
     public void delete(int id) {
         Conexao conexao = new Conexao();
         try {
-            PreparedStatement sql = conexao.getConexao().prepareStatement("DELETE FROM Comentarios WHERE ID = ? ");
+            PreparedStatement sql = conexao.getConexao().prepareStatement("DELETE FROM comentarios WHERE ID = ? ");
             sql.setInt(1, id);
             sql.executeUpdate();
 
@@ -112,10 +112,10 @@ public class ComentarioDAO implements Dao<Comentario> {
             ResultSet resultado = preparedStatement.executeQuery();
             if (resultado != null) {
                 while (resultado.next()) {
-                    Comentario Comentario = new Comentario(resultado.getInt("ID"),resultado.getString("COMENTARIO"),
-                            resultado.getString("DATA"),
-                            resultado.getInt("IDUSUARIO"),
-                            resultado.getInt("IDCATEGORIA")
+                    Comentario Comentario = new Comentario(resultado.getInt("id"),resultado.getString("COMENTARIO"),
+                            resultado.getString("data"),
+                            resultado.getInt("idusuario"),
+                            resultado.getInt("idcategoria")
                     );
                     meusComentarios.add(Comentario);
                 }

@@ -2,6 +2,8 @@ package controller;
 
 import entidade.Usuario;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -32,10 +34,27 @@ public class RegistrarController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
+        String nome = request.getParameter("nome");
+        String endereco = request.getParameter("endereco");
+        String cpf = request.getParameter("cpf");
+        String senha = request.getParameter("senha");
+        String senha2 = request.getParameter("senha2");
+        
+        Usuario usuario = new Usuario(nome, cpf, endereco, senha);
+        
+        UsuarioDAO usuarioDAO = new UsuarioDAO();
+        try {
+            usuarioDAO.inserir(usuario);
+        } catch (Exception ex) {
+            Logger.getLogger(RegistrarController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
         RequestDispatcher rd;
+       
+        System.out.println( nome);
         request.setAttribute("msgOperacaoRealizada", "Operação não implementada");
         request.setAttribute("link", "home");
-        rd = request.getRequestDispatcher("/views/comum/showMessage.jsp");
+        rd = request.getRequestDispatcher("/views/autenticacao/formLogin.jsp");
         rd.forward(request, response);
 
     }
