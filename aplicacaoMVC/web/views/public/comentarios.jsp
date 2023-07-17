@@ -1,3 +1,4 @@
+<%@page import="entidade.Usuario"%>
 <%@page import="entidade.Comentario"%>
 <%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -23,7 +24,7 @@
                 <h1>Comentários dos usuários</h1>
 
                 <%
-                    String acao = "";
+                    Usuario usuario = (Usuario)((HttpServletRequest) request).getSession().getAttribute("usuario");
                     ArrayList<Comentario> listaComentarios = (ArrayList<Comentario>) request.getAttribute("listaComentarios");
                     for (Comentario comentario : listaComentarios) {%>
 
@@ -33,25 +34,29 @@
                     </div>
                 </div>
 
-                    <div class="mt-5">
-                    <form action="ComentarioController" method="POST">
-                        
-                        <div class="mb-3">
-                           <label for="comentario" class="form-label">Escreva seu comentário:</label>
-                           <textarea id="textarea" class="form-control form-control-sm" name="comentario" rows="5" cols="10"></textarea>
-                        </div>
-                        
-                        <div><!-- comment -->
-                            <input class="btn btn-primary" name="btEnviar" type="submit" value="Enviar" onclick="<%System.out.println("oiufodhfdh");%>"
-                        </div>
-                        
-                        
-                    </form>
 
-                </div>
+
                 <%  }%>
+
+            </div>
+            <div class="mt-5">
+                <form action="ComentarioController" method="POST">
+
+                    <div class="mb-3">
+                        <label for="comentario" class="form-label">Escreva seu comentário:</label>
+                        <textarea id="textarea" class="form-control form-control-sm" name="comentario" rows="5" cols="10"></textarea>
+                    </div>
+
+                    <div><!-- comment -->
+                        <input class="btn btn-primary" name="btEnviar" type="submit" value="Enviar" >
+                    </div>
+
+
+                </form>
             </div>
         </div>
+                
+
         <script src="http://localhost:8080/aplicacaoMVC/views/bootstrap/bootstrap.bundle.min.js"></script>
     </body>
 </html>

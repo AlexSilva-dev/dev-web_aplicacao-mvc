@@ -54,10 +54,11 @@ public class ComentarioDAO implements Dao<Comentario> {
 
         Conexao conexao = new Conexao();
         try {
-            PreparedStatement sql = conexao.getConexao().prepareStatement("INSERT INTO Comentarios (cometario, data, idusuario) VALUES (?,?,?)");
+            PreparedStatement sql = conexao.getConexao().prepareStatement("INSERT INTO comentarios (comentario, data, idusuario, idcategoria) VALUES (?,?,?,?)");
             sql.setString(1, t.getComentario());
             sql.setString(2, t.getData());
             sql.setInt(3, t.getIdusuario());
+            sql.setInt(4, t.getIdcategoria());
             sql.executeUpdate();
 
         } catch (SQLException e) {

@@ -7,8 +7,11 @@ package controller.admin;
 
 import entidade.Categoria;
 import entidade.Comentario;
+import entidade.Usuario;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -34,79 +37,26 @@ public class ComentarioController extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-
-    
-    
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
+        
 
-        //String id =request.getParameter("idusuario");
-        String comentario = request.getParameter("comentario");
-        String btEnviar = request.getParameter("btEnviar");
-
-        System.out.println(comentario + btEnviar);
-        RequestDispatcher rd;
-
-        if (comentario.isEmpty()) {
-            Categoria categoria = new Categoria();
-            switch (btEnviar) {
-                case "Enviar":
-                    Comentario comm = new Comentario();
-                    ComentarioDAO commDAO = new ComentarioDAO();
-                    
-                case "Alterar":
-                case "Excluir":
-                    try {
-                    CategoriaDAO categoriaDAO = new CategoriaDAO();
-                    categoria = categoriaDAO.get(id);
-
-                } catch (Exception ex) {
-                    System.out.println(ex.getMessage());
-                    throw new RuntimeException("Falha em uma query para cadastro de usuario");
-                }
-                break;
-            }
-
-            request.setAttribute("categoria", categoria);
-            request.setAttribute("acao", btEnviar);
-
-            request.setAttribute("msgError", "É necessário preencher todos os campos");
-
-            rd = request.getRequestDispatcher("/views/admin/categoria/formCategoria.jsp");
-            rd.forward(request, response);
-
-        } else {
-            
-             Categoria categoria = new Categoria(id,descricao);
-             CategoriaDAO categoriaDAO = new CategoriaDAO();
-
-            try {
-                switch (btEnviar) {
-                    case "Incluir":
-                        categoriaDAO.insert(categoria);
-                        request.setAttribute("msgOperacaoRealizada", "Inclusão realizada com sucesso");
-                        break;
-                    case "Alterar":
-                        categoriaDAO.update(categoria);
-                        request.setAttribute("msgOperacaoRealizada", "Alteração realizada com sucesso");
-                        break;
-                    case "Excluir":
-                        categoriaDAO.delete(id);
-                        request.setAttribute("msgOperacaoRealizada", "Exclusão realizada com sucesso");
-                        break;
-                }
-
-                request.setAttribute("link", "/aplicacaoMVC/admin/CategoriaController?acao=Listar");
-                rd = request.getRequestDispatcher("/views/comum/showMessage.jsp");
-                rd.forward(request, response);
-
-            } catch (IOException | ServletException ex) {
-                System.out.println(ex.getMessage());
-                throw new RuntimeException("Falha em uma query para cadastro de usuario");
-            }
+        try (PrintWriter out = response.getWriter()) {
+            /* TODO output your page here. You may use following sample code. */
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet ComentarioController</title>");            
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1>Servlet ComentarioController at " + request.getContextPath() + "</h1>");
+            out.println("</body>");
+            out.println("</html>");
         }
     }
+    
+    
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -134,6 +84,38 @@ public class ComentarioController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
+
+                String comentario = request.getParameter("comentario");
+                
+                String btEnviar = request.getParameter("btEnviar");
+                
+                
+                switch (btEnviar) {
+            case "Enviar":
+                
+                LocalDate dataAtual = LocalDate.now();
+                DateTimeFormatter formatador = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+                String dataString = dataAtual.format(formatador);
+                Usuario usuario = (Usuario)((HttpServletRequest) request).getSession().getAttribute("usuario");
+
+
+                Comentario comm = new Comentario(2, comentario, dataString, usuario.getId(), 1);
+                ComentarioDAO commDAO = new ComentarioDAO();
+                commDAO.insert(comm);
+                
+                ((HttpServletResponse) response).sendRedirect("http://localhost:8080/aplicacaoMVC/MostrarComentarios");
+
+
+                
+                
+                
+                
+                break;
+            default:
+                throw new AssertionError();
+        }
+        
         processRequest(request, response);
     }
 

@@ -30,6 +30,19 @@ public class Comentario {
         this.nomeCategoria = "";
     }
 
+    
+    
+    public Comentario( String comentario, String data, int idusuario, int idcategoria) {
+        this.comentario = comentario;
+        this.data = data;
+        this.idusuario = idusuario;
+        this.idcategoria = idcategoria;
+        this.nomeususario = "";
+        this.nomeCategoria = "";
+    }
+
+    
+    
     public int getId() {
         return id;
     }
