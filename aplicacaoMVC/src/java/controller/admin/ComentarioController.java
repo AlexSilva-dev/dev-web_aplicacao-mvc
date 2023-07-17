@@ -104,13 +104,17 @@ public class ComentarioController extends HttpServlet {
                 ComentarioDAO commDAO = new ComentarioDAO();
                 commDAO.insert(comm);
                 
-                ((HttpServletResponse) response).sendRedirect("http://localhost:8080/aplicacaoMVC/MostrarComentarios");
-
-
+                ((HttpServletResponse) response).sendRedirect("http://localhost:8080/aplicacaoMVC/MostrarComentarios");   
+                break;
                 
+            case "Excluir":
+                System.out.println("fjapf");
+                ((HttpServletResponse) response).sendRedirect("http://localhost:8080/aplicacaoMVC/MostrarComentarios");   
+                break;
                 
-                
-                
+            case "Alterar":
+                System.out.println("fjapf");
+                ((HttpServletResponse) response).sendRedirect("http://localhost:8080/aplicacaoMVC/MostrarComentarios");   
                 break;
             default:
                 throw new AssertionError();

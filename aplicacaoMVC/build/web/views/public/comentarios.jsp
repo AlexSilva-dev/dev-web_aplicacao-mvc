@@ -24,13 +24,33 @@
                 <h1>Comentários dos usuários</h1>
 
                 <%
-                    Usuario usuario = (Usuario)((HttpServletRequest) request).getSession().getAttribute("usuario");
+                    String btEnviar;
+                    Usuario usuario = (Usuario) ((HttpServletRequest) request).getSession().getAttribute("usuario");
                     ArrayList<Comentario> listaComentarios = (ArrayList<Comentario>) request.getAttribute("listaComentarios");
                     for (Comentario comentario : listaComentarios) {%>
 
-                <div class="card mb-2 col-sm-6">
+                <div class="card mb-4 col-sm-10">
                     <div class="card-body">
-                        <%= comentario.getComentario()%>
+
+                        <p class="lead">
+                            <%= comentario.getComentario()%>
+                        </p>
+
+                        <div class="d-inline col-sm-4">
+                            <form action="ComentarioController" method="POST">
+                                <input type="submit" class="btn btn-danger" name="btEnviar" value="Excluir">
+                            </form>
+
+                        </div>
+
+                        <div class="d-inline col-sm-2">
+                            <form action="ComentarioController" method="POST">
+                                <input type="submit" class="btn btn-warning" name="btEnviar" value="Alterar">
+                            </form>
+
+                        </div>
+
+
                     </div>
                 </div>
 
@@ -55,7 +75,7 @@
                 </form>
             </div>
         </div>
-                
+
 
         <script src="http://localhost:8080/aplicacaoMVC/views/bootstrap/bootstrap.bundle.min.js"></script>
     </body>
