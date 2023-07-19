@@ -3077,3 +3077,13 @@
 127.0.0.1 - - [18/Jul/2023:23:04:18 -0300] "GET /aplicacaoMVC/views/bootstrap/bootstrap.min.css HTTP/1.1" 200 155799
 127.0.0.1 - - [18/Jul/2023:23:04:18 -0300] "GET /aplicacaoMVC/views/bootstrap/bootstrap.bundle.min.js HTTP/1.1" 200 79742
 127.0.0.1 - - [18/Jul/2023:23:04:18 -0300] "GET /aplicacaoMVC/MostrarComentarios HTTP/1.1" 200 9698
+127.0.0.1 - - [18/Jul/2023:23:11:40 -0300] "HEAD /netbeans-tomcat-status-test HTTP/1.1" 404 -
+127.0.0.1 - admin [18/Jul/2023:23:11:40 -0300] "GET /manager/text/ HTTP/1.1" 200 38
+127.0.0.1 - - [18/Jul/2023:23:11:40 -0300] "HEAD /netbeans-tomcat-status-test HTTP/1.1" 404 -
+127.0.0.1 - admin [18/Jul/2023:23:11:40 -0300] "GET /manager/text/ HTTP/1.1" 200 38
+127.0.0.1 - - [18/Jul/2023:23:11:40 -0300] "HEAD /netbeans-tomcat-status-test HTTP/1.1" 404 -
+127.0.0.1 - admin [18/Jul/2023:23:11:40 -0300] "GET /manager/text/ HTTP/1.1" 200 38
+127.0.0.1 - admin [18/Jul/2023:23:11:40 -0300] "GET /manager/text/list HTTP/1.1" 200 299
+127.0.0.1 - admin [18/Jul/2023:23:11:40 -0300] "GET /manager/text/reload?path=/aplicacaoMVC HTTP/1.1" 200 69
+127.0.0.1 - - [18/Jul/2023:23:11:40 -0300] "HEAD /netbeans-tomcat-status-test HTTP/1.1" 404 -
+127.0.0.1 - admin [18/Jul/2023:23:11:40 -0300] "GET /manager/text/ HTTP/1.1" 200 38
