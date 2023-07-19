@@ -27,7 +27,7 @@ public class ComentarioDAO implements Dao<Comentario> {
     public Comentario get(int id) {
         Conexao conexao = new Conexao();
         try {
-            PreparedStatement sql = conexao.getConexao().prepareStatement("SELECT * FROM Comentarios WHERE ID = ? ");
+            PreparedStatement sql = conexao.getConexao().prepareStatement("SELECT * FROM comentarios WHERE ID = ? ");
             sql.setInt(1, id);
             ResultSet resultado = sql.executeQuery();
             Comentario comentario = new Comentario();
@@ -37,7 +37,8 @@ public class ComentarioDAO implements Dao<Comentario> {
                     comentario.setId(Integer.parseInt(resultado.getString("id")));
                     comentario.setComentario(resultado.getString("comentario"));
                     comentario.setData(resultado.getString("data"));
-                    comentario.setId(Integer.parseInt(resultado.getString("idusuario")));
+                    comentario.setIdusuario(Integer.parseInt(resultado.getString("idusuario")));
+                    comentario.setIdcategoria(Integer.parseInt(resultado.getString("idcategoria")));
                 }
             }
             return comentario;
@@ -72,10 +73,13 @@ public class ComentarioDAO implements Dao<Comentario> {
     public void update(Comentario t) {
         Conexao conexao = new Conexao();
         try {
-            PreparedStatement sql = conexao.getConexao().prepareStatement("UPDATE Comentarios SET cometario = ?, data = ?, idusuario = ?, senha = ?  WHERE ID = ? ");
+            PreparedStatement sql = conexao.getConexao().prepareStatement("UPDATE comentarios SET comentario = ?, data = ?, idusuario = ?, idcategoria = ?  WHERE id = ? ");
             sql.setString(1, t.getComentario());
             sql.setString(2, t.getData());
             sql.setInt(3, t.getIdusuario());
+            sql.setInt(4, t.getIdcategoria());
+            sql.setInt(5, t.getId());
+            
 
             sql.executeUpdate();
 
