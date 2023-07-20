@@ -51,7 +51,7 @@
                                 <input type="submit" class="btn btn-danger" name="btEnviar" value="Excluir">
                             </form>
                         </div>
-                                
+
 
                         <div class="col-sm-1">
                             <a href="/aplicacaoMVC/ComentarioController?idComentario=<%=comentario.getId()%>&idCategoria=<%=comentario.getIdcategoria()%>" class="btn btn-warning">
@@ -89,9 +89,21 @@
                             </select>
                         </div>
                     </div>
+                    <%
+                        HttpSession sessao = request.getSession(false);
+                        if (sessao != null) {
+                            Usuario usu = (Usuario) sessao.getAttribute("usuario");
+                            if (usu != null) {%>
+
                     <div><!-- comment -->
                         <input class="btn btn-primary" name="btEnviar" type="submit" value="Enviar" >
-                    </div>
+                    </div> 
+
+                    <%} else {%>
+
+                    <a class="btn btn-primary" href="/aplicacaoMVC/AutenticaController">Enviar</a>
+                    <% }
+                        }%>
 
 
                 </form>

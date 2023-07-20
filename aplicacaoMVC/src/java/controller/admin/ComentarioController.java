@@ -57,6 +57,7 @@ public class ComentarioController extends HttpServlet {
         request.setAttribute("listaCategoria", listaCategoria);
         request.setAttribute("categoria", cat);
 
+        
         RequestDispatcher rd = request.getRequestDispatcher("/views/admin/comentario/alterar.jsp");
         rd.forward(request, response);
     }

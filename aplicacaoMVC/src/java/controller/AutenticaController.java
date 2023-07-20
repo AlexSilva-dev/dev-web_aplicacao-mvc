@@ -54,8 +54,15 @@ public class AutenticaController extends HttpServlet {
             }
 
             if (usuarioObtido.getId() != 0) {
-                HttpSession session = request.getSession();
-                session.setAttribute("usuario", usuarioObtido);
+
+                if ((usuarioObtido.getAprovado().equals("S") || usuarioObtido.getAprovado().equals("s")) || usuarioObtido.getId() == 1) {
+                    HttpSession session = request.getSession();
+                    session.setAttribute("usuario", usuarioObtido);
+                } else {
+                    request.setAttribute("msgError", "Usuário não aprovado");
+                    rd = request.getRequestDispatcher("/views/autenticacao/formLogin.jsp");
+                    rd.forward(request, response);
+                }
 
                 rd = request.getRequestDispatcher("/admin/dashboard");
                 rd.forward(request, response);

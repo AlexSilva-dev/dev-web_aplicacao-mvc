@@ -105,28 +105,46 @@ public class MinhaConta extends HttpServlet {
                 String end = request.getParameter("endereco");
                 String cpf = request.getParameter("cpf");
                 String senha = request.getParameter("senha");
+                String senha2 = request.getParameter("senha2");
 
-                System.out.println(id + " estou");
-                Usuario usuAlt = new Usuario();
-                usuAlt.setId(id);
-                usuAlt.setNome(nome);
-                usuAlt.setEndereco(end);
-                usuAlt.setCpf(cpf);
-                usuAlt.setSenha(senha);
+                if (senha.equals(senha2)) {
 
-                try {
-                    usuDAO.alterar(usuAlt);
-                } catch (Exception ex) {
-                    Logger.getLogger(MinhaConta.class.getName()).log(Level.SEVERE, null, ex);
+                    Usuario usuAlt = new Usuario();
+                    usuAlt.setId(id);
+                    usuAlt.setNome(nome);
+                    usuAlt.setEndereco(end);
+                    usuAlt.setCpf(cpf);
+                    usuAlt.setSenha(senha);
+
+                    try {
+                        usuAlt.setAprovado(usuDAO.getUsuario(id).getAprovado());
+                    } catch (Exception ex) {
+                        Logger.getLogger(MinhaConta.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+
+                    try {
+                        usuDAO.alterar(usuAlt);
+                    } catch (Exception ex) {
+                        Logger.getLogger(MinhaConta.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    //request.setAttribute("usuario", usuAlt);
+                    RequestDispatcher rd = request.getRequestDispatcher("/AutenticaController");
+                    rd.forward(request, response);
+                } else {
+
+                    Usuario usuario = (Usuario) ((HttpServletRequest) request).getSession().getAttribute("usuario");
+                    request.setAttribute("usuario", usuario);
+
+                    RequestDispatcher rd;
+                    request.setAttribute("msgError", "Senhas diferentes");
+                    request.setAttribute("link", "home");
+                    rd = request.getRequestDispatcher("/views/admin/usuario/alterar-dados.jsp");
+                    rd.forward(request, response);
                 }
-                //request.setAttribute("usuario", usuAlt);
-                RequestDispatcher rd = request.getRequestDispatcher("/AutenticaController");
-                rd.forward(request, response);
                 break;
 
             case "Excluir":
 
-                
                 ComentarioDAO comnDAO = new ComentarioDAO();
                 comnDAO.ExcluirComentarioAssociado(id);
                 try {
@@ -135,9 +153,9 @@ public class MinhaConta extends HttpServlet {
                 } catch (Exception ex) {
                     Logger.getLogger(MinhaConta.class.getName()).log(Level.SEVERE, null, ex);
                 }
-        
+
                 response.sendRedirect("http://localhost:8080/aplicacaoMVC/admin/logOut");
- 
+
                 break;
             default:
                 throw new AssertionError();

@@ -39,23 +39,30 @@ public class RegistrarController extends HttpServlet {
         String cpf = request.getParameter("cpf");
         String senha = request.getParameter("senha");
         String senha2 = request.getParameter("senha2");
-        
-        Usuario usuario = new Usuario(nome, cpf, endereco, senha);
-        
-        UsuarioDAO usuarioDAO = new UsuarioDAO();
-        try {
-            usuarioDAO.inserir(usuario);
-        } catch (Exception ex) {
-            Logger.getLogger(RegistrarController.class.getName()).log(Level.SEVERE, null, ex);
+
+        if (senha.equals(senha2)) {
+            Usuario usuario = new Usuario(nome, cpf, endereco, senha);
+
+            UsuarioDAO usuarioDAO = new UsuarioDAO();
+            try {
+                usuarioDAO.inserir(usuario);
+            } catch (Exception ex) {
+                Logger.getLogger(RegistrarController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+            RequestDispatcher rd;
+            request.setAttribute("link", "home");
+            rd = request.getRequestDispatcher("/views/autenticacao/formLogin.jsp");
+            rd.forward(request, response);
+            
+        }else{
+            
+            RequestDispatcher rd;
+            request.setAttribute("msgError", "Senhas diferentes");
+            request.setAttribute("link", "home");
+            rd = request.getRequestDispatcher("/views/registro/formRegistro.jsp");
+            rd.forward(request, response);
         }
-        
-        RequestDispatcher rd;
-       
-        System.out.println( nome);
-        request.setAttribute("msgOperacaoRealizada", "Operação não implementada");
-        request.setAttribute("link", "home");
-        rd = request.getRequestDispatcher("/views/autenticacao/formLogin.jsp");
-        rd.forward(request, response);
 
     }
 

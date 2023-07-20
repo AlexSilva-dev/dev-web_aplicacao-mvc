@@ -35,6 +35,15 @@
                 <div class="col-8  ">
 
                     <h1 class="mb-4">Alterar dados</h1>
+                    <%
+                        String msgError = (String) request.getAttribute("msgError");
+                        if ((msgError != null) && (!msgError.isEmpty())) {%>
+                    <div class="alert alert-danger" role="alert">
+                        <%= msgError%>
+                    </div>
+                    <% }%>
+
+
                     <form action="MinhaConta" method="POST">
                         <input type="hidden" name="id" value="<%=usuario.getId()%>" >
                         <div class="mb-3">
@@ -58,7 +67,7 @@
                             <label for="senha" class="form-label">Redigite a senha </label>
                             <input type="password" name="senha2" value="111" class="form-control" >
                         </div>
-                        
+
                         <div class="row">
                             <div class="col-sm-2">
                                 <input type="submit" name="btEnviar" value="Alterar" class="btn btn-warning">

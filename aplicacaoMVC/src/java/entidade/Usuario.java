@@ -7,6 +7,7 @@ public class Usuario {
     private String cpf;
     private String endereco;
     private String senha;
+    private String aprovado;
 
     public Usuario(String nome, String cpf, String endereco, String senha) {
         this.nome = nome;
@@ -74,6 +75,14 @@ public class Usuario {
 
     public void setSenha(String senha) {
         this.senha = senha;
+    }
+
+    public String getAprovado() {
+        return aprovado;
+    }
+
+    public void setAprovado(String aprovado) {
+        this.aprovado = aprovado;
     }
 
 }

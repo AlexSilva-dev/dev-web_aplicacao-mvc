@@ -11,12 +11,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="shortcut icon" href="#">
         <title>Lista Categorias</title>
-         <link href="http://localhost:8080/aplicacaoMVC/views/bootstrap/bootstrap.min.css"  rel="stylesheet">
+        <link href="http://localhost:8080/aplicacaoMVC/views/bootstrap/bootstrap.min.css"  rel="stylesheet">
 
     </head>
     <body>
         <div class="container">
-             <jsp:include page="../../comum/menu.jsp" />
+            <jsp:include page="../../comum/menu.jsp" />
             <div class="mt-5">
 
                 <h1>Aprovação de usuarios</h1>
@@ -37,19 +37,27 @@
                                 ArrayList<Usuario> listaUsuario = (ArrayList<Usuario>) request.getAttribute("listUsuario");
 
                                 for (Usuario usuario : listaUsuario) {
-                                    out.println("<tr>");
-                                    out.println("<th>" + usuario.getId() + "</th>");
-                                    out.println("<td>" + usuario.getNome()+ "</td>");
-                                    out.println("<td>" + usuario.getEndereco()+ "</td>");
-                                    %>
-                            <td>
-                            <a href="/aplicacaoMVC/admin/CategoriaController?acao=Alterar&id=<%=usuario.getId()%>" class="btn btn-warning">Aprovar</a>
-                            
+                                    if (usuario.getAprovado().equals("N") || usuario.getAprovado().equals("n")) {
+                                        out.println("<tr>");
+                                        out.println("<th>" + usuario.getId() + "</th>");
+                                        out.println("<td>" + usuario.getNome() + "</td>");
+                                        out.println("<td>" + usuario.getEndereco() + "</td>");
+
+
+                            %>
+                        <td>
+
+                            <form action="NovosUsuarios" method="POST">
+                                <input type="hidden" name="id" value="<%=usuario.getId()%>">
+                                <input type="submit" class="btn btn-primary" name="btEnviar" value="Aprovar">
+                            </form>
+
                             <%   out.println("</tr>");
+                                    }
                                 }
                             %>
 
-                        </tbody>
+                            </tbody>
                     </table>
                 </div>
             </div>

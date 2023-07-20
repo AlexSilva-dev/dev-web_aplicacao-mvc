@@ -53,6 +53,7 @@ public class UsuarioDAO {
                     usuario.setCpf(resultado.getString("CPF"));
                     usuario.setEndereco(resultado.getString("ENDERECO"));
                     usuario.setSenha(resultado.getString("SENHA"));
+                    usuario.setAprovado(resultado.getString("aprovado"));
                 }
             }
             return usuario;
@@ -64,15 +65,18 @@ public class UsuarioDAO {
         }
     }
 
-    public void alterar(Usuario Usuario) throws Exception {
+    public void alterar(Usuario usuario) throws Exception {
         Conexao conexao = new Conexao();
+
         try {
-            PreparedStatement sql = conexao.getConexao().prepareStatement("UPDATE usuarios SET nome = ?, cpf = ?, endereco = ?, senha = ?  WHERE id = ? ");
-            sql.setString(1, Usuario.getNome());
-            sql.setString(2, Usuario.getCpf());
-            sql.setString(3, Usuario.getEndereco());
-            sql.setString(4, Usuario.getSenha());
-            sql.setInt(5, Usuario.getId());
+            PreparedStatement sql = conexao.getConexao().prepareStatement("UPDATE usuarios SET nome = ?, cpf = ?, endereco = ?, senha = ?, aprovado = ?  WHERE id = ? ");
+            sql.setString(1, usuario.getNome());
+            sql.setString(2, usuario.getCpf());
+            sql.setString(3, usuario.getEndereco());
+            sql.setString(4, usuario.getSenha());
+            sql.setString(5, usuario.getAprovado());
+            sql.setInt(6, usuario.getId());
+
             sql.executeUpdate();
 
         } catch (SQLException e) {
@@ -137,6 +141,7 @@ public class UsuarioDAO {
                     usuarioObtido.setCpf(resultado.getString("CPF"));
                     usuarioObtido.setEndereco(resultado.getString("ENDERECO"));
                     usuarioObtido.setSenha(resultado.getString("SENHA"));
+                    usuarioObtido.setAprovado(resultado.getString("aprovado"));
                 }
             }
             return usuarioObtido;
@@ -148,9 +153,8 @@ public class UsuarioDAO {
             conexao.closeConexao();
         }
     }
-    
-    
-    public ArrayList<Usuario> getAll(){
+
+    public ArrayList<Usuario> getAll() {
         ArrayList<Usuario> meusUsuarios = new ArrayList();
         Conexao conexao = new Conexao();
         try {
@@ -160,14 +164,15 @@ public class UsuarioDAO {
             ResultSet resultado = preparedStatement.executeQuery();
             if (resultado != null) {
                 while (resultado.next()) {
-                    Usuario Usuario = new Usuario(
-                            resultado.getInt("id"), 
+                    Usuario usuario = new Usuario(
+                            resultado.getInt("id"),
                             resultado.getString("nome"),
                             resultado.getString("cpf"),
                             resultado.getString("endereco"),
                             resultado.getString("senha")
                     );
-                    meusUsuarios.add(Usuario);
+                    usuario.setAprovado(resultado.getString("aprovado"));
+                    meusUsuarios.add(usuario);
                 }
             }
         } catch (SQLException e) {

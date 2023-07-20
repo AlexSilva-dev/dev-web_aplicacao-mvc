@@ -8,6 +8,8 @@ import entidade.Usuario;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -36,8 +38,8 @@ public class NovosUsuarios extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         UsuarioDAO usuDAO = new UsuarioDAO();
-        
-        ArrayList<Usuario> listUsuario =  usuDAO.getAll();
+
+        ArrayList<Usuario> listUsuario = usuDAO.getAll();
         request.setAttribute("listUsuario", listUsuario);
         RequestDispatcher rd = request.getRequestDispatcher("/views/admin/usuario/novosUsuarios.jsp");
         rd.forward(request, response);
@@ -69,7 +71,24 @@ public class NovosUsuarios extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+
+        int id = Integer.parseInt(request.getParameter("id"));
+        UsuarioDAO usuDAO = new UsuarioDAO();
+
+        try {
+            Usuario usu = usuDAO.getUsuario(id);
+            usu.setAprovado("S");
+            usuDAO.alterar(usu);
+        } catch (Exception ex) {
+            Logger.getLogger(NovosUsuarios.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+
+        ArrayList<Usuario> listUsuario = usuDAO.getAll();
+        request.setAttribute("listUsuario", listUsuario);
+        RequestDispatcher rd = request.getRequestDispatcher("/views/admin/usuario/novosUsuarios.jsp");
+        rd.forward(request, response);        
+
     }
 
     /**
