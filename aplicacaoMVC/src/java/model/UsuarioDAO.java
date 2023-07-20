@@ -22,14 +22,18 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
 public class UsuarioDAO {
 
     public void inserir(Usuario usuario) throws Exception {
+        if(usuario.getAprovado()==null){
+            usuario.setAprovado("N");
+        }
         Conexao conexao = new Conexao();
         try {
-            PreparedStatement sql = conexao.getConexao().prepareStatement("INSERT INTO usuarios (nome, cpf, endereco, senha)"
-                    + " VALUES (?,?,?,?)");
+            PreparedStatement sql = conexao.getConexao().prepareStatement("INSERT INTO usuarios (nome, cpf, endereco, senha, aprovado)"
+                    + " VALUES (?,?,?,?,?)");
             sql.setString(1, usuario.getNome());
             sql.setString(2, usuario.getCpf());
             sql.setString(3, usuario.getEndereco());
             sql.setString(4, usuario.getSenha());
+            sql.setString(5,usuario.getAprovado());
             sql.executeUpdate();
 
         } catch (SQLException e) {
@@ -181,6 +185,31 @@ public class UsuarioDAO {
             conexao.closeConexao();
         }
         return meusUsuarios;
+    }
+
+    public int contarUsuarios() {
+        Conexao conexao = new Conexao();
+        int cont = 0;
+        try {
+            String selectSQL = "SELECT count(1) as total FROM usuarios";
+            PreparedStatement preparedStatement;
+            preparedStatement = conexao.getConexao().prepareStatement(selectSQL);
+            ResultSet resultado = preparedStatement.executeQuery();
+
+            if (resultado.next()) {
+
+                System.out.println(resultado.getInt("total"));
+                cont = resultado.getInt("total");
+
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException("Query de select (contarUsuarios) incorreta");
+
+        } finally {
+            conexao.closeConexao();
+
+        }
+        return cont;
     }
 
 }

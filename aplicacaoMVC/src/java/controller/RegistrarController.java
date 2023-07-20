@@ -44,6 +44,10 @@ public class RegistrarController extends HttpServlet {
             Usuario usuario = new Usuario(nome, cpf, endereco, senha);
 
             UsuarioDAO usuarioDAO = new UsuarioDAO();
+            if (usuarioDAO.contarUsuarios() == 0) {
+                usuario.setAprovado("S");
+
+            }
             try {
                 usuarioDAO.inserir(usuario);
             } catch (Exception ex) {
@@ -54,9 +58,9 @@ public class RegistrarController extends HttpServlet {
             request.setAttribute("link", "home");
             rd = request.getRequestDispatcher("/views/autenticacao/formLogin.jsp");
             rd.forward(request, response);
-            
-        }else{
-            
+
+        } else {
+
             RequestDispatcher rd;
             request.setAttribute("msgError", "Senhas diferentes");
             request.setAttribute("link", "home");

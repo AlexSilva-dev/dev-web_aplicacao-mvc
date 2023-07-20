@@ -2,6 +2,8 @@ package controller;
 
 import entidade.Usuario;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -55,7 +57,9 @@ public class AutenticaController extends HttpServlet {
 
             if (usuarioObtido.getId() != 0) {
 
-                if ((usuarioObtido.getAprovado().equals("S") || usuarioObtido.getAprovado().equals("s")) || usuarioObtido.getId() == 1) {
+
+                if ((usuarioObtido.getAprovado().equals("S") || usuarioObtido.getAprovado().equals("s"))) {
+
                     HttpSession session = request.getSession();
                     session.setAttribute("usuario", usuarioObtido);
                 } else {
