@@ -13,7 +13,7 @@ import model.UsuarioDAO;
 
 /**
  *
- * @author Leonardo
+ * @author LeonardoAutenticaController
  */
 @WebServlet(name = "AutenticaController", urlPatterns = {"/AutenticaController"})
 public class AutenticaController extends HttpServlet {

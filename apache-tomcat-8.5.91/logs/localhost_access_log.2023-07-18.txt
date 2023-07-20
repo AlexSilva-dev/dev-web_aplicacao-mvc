@@ -3087,3 +3087,9 @@
 127.0.0.1 - admin [18/Jul/2023:23:11:40 -0300] "GET /manager/text/reload?path=/aplicacaoMVC HTTP/1.1" 200 69
 127.0.0.1 - - [18/Jul/2023:23:11:40 -0300] "HEAD /netbeans-tomcat-status-test HTTP/1.1" 404 -
 127.0.0.1 - admin [18/Jul/2023:23:11:40 -0300] "GET /manager/text/ HTTP/1.1" 200 38
+127.0.0.1 - - [18/Jul/2023:23:13:24 -0300] "HEAD /netbeans-tomcat-status-test HTTP/1.1" 404 -
+127.0.0.1 - admin [18/Jul/2023:23:13:24 -0300] "GET /manager/text/ HTTP/1.1" 200 38
+127.0.0.1 - - [18/Jul/2023:23:13:24 -0300] "HEAD /netbeans-tomcat-status-test HTTP/1.1" 404 -
+127.0.0.1 - admin [18/Jul/2023:23:13:24 -0300] "GET /manager/text/ HTTP/1.1" 200 38
+127.0.0.1 - - [18/Jul/2023:23:13:24 -0300] "HEAD /netbeans-tomcat-status-test HTTP/1.1" 404 -
+127.0.0.1 - admin [18/Jul/2023:23:13:24 -0300] "GET /manager/text/ HTTP/1.1" 200 38

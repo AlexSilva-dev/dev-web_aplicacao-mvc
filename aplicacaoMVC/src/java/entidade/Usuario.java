@@ -15,6 +15,14 @@ public class Usuario {
         this.senha = senha;
     }
 
+    public Usuario(int id, String nome, String cpf, String endereco, String senha) {
+        this.id = id;
+        this.nome = nome;
+        this.cpf = cpf;
+        this.endereco = endereco;
+        this.senha = senha;
+    }
+
     public Usuario(String cpf, String senha) {
         this.cpf = cpf;
         this.senha = senha;

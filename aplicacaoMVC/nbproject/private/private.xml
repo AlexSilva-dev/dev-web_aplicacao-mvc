@@ -5,7 +5,9 @@
         <group>
             <file>file:/home/lek/Development/MyCode/UFF/dev-web_aplicacao-mvc/aplicacaoMVC/src/java/controller/admin/ComentarioController.java</file>
             <file>file:/home/lek/Development/MyCode/UFF/dev-web_aplicacao-mvc/aplicacaoMVC/src/java/filtro/filtroRestrito.java</file>
-            <file>file:/home/lek/Development/MyCode/UFF/dev-web_aplicacao-mvc/aplicacaoMVC/src/java/controller/admin/CategoriaController.java</file>
+            <file>file:/home/lek/Development/MyCode/UFF/dev-web_aplicacao-mvc/aplicacaoMVC/web/views/admin/categoria/formCategoria.jsp</file>
+            <file>file:/home/lek/Development/MyCode/UFF/dev-web_aplicacao-mvc/aplicacaoMVC/web/views/admin/comentario/alterar.jsp</file>
+            <file>file:/home/lek/Development/MyCode/UFF/dev-web_aplicacao-mvc/aplicacaoMVC/src/java/model/ComentarioDAO.java</file>
             <file>file:/home/lek/Development/MyCode/UFF/dev-web_aplicacao-mvc/aplicacaoMVC/web/views/public/comentarios.jsp</file>
         </group>
     </open-files>

@@ -64,10 +64,10 @@ public class UsuarioDAO {
         }
     }
 
-    public void Alterar(Usuario Usuario) throws Exception {
+    public void alterar(Usuario Usuario) throws Exception {
         Conexao conexao = new Conexao();
         try {
-            PreparedStatement sql = conexao.getConexao().prepareStatement("UPDATE usuarios SET nome = ?, cpf = ?, endereco = ?, senha = ?  WHERE ID = ? ");
+            PreparedStatement sql = conexao.getConexao().prepareStatement("UPDATE usuarios SET nome = ?, cpf = ?, endereco = ?, senha = ?  WHERE id = ? ");
             sql.setString(1, Usuario.getNome());
             sql.setString(2, Usuario.getCpf());
             sql.setString(3, Usuario.getEndereco());
@@ -82,11 +82,11 @@ public class UsuarioDAO {
         }
     }
 
-    public void Excluir(Usuario Usuario) throws Exception {
+    public void excluir(int id) throws Exception {
         Conexao conexao = new Conexao();
         try {
-            PreparedStatement sql = conexao.getConexao().prepareStatement("DELETE FROM usuarios WHERE ID = ? ");
-            sql.setInt(1, Usuario.getId());
+            PreparedStatement sql = conexao.getConexao().prepareStatement("DELETE FROM usuarios WHERE id = ? ");
+            sql.setInt(1, id);
             sql.executeUpdate();
 
         } catch (SQLException e) {
@@ -147,6 +147,35 @@ public class UsuarioDAO {
         } finally {
             conexao.closeConexao();
         }
+    }
+    
+    
+    public ArrayList<Usuario> getAll(){
+        ArrayList<Usuario> meusUsuarios = new ArrayList();
+        Conexao conexao = new Conexao();
+        try {
+            String selectSQL = "SELECT * FROM usuarios";
+            PreparedStatement preparedStatement;
+            preparedStatement = conexao.getConexao().prepareStatement(selectSQL);
+            ResultSet resultado = preparedStatement.executeQuery();
+            if (resultado != null) {
+                while (resultado.next()) {
+                    Usuario Usuario = new Usuario(
+                            resultado.getInt("id"), 
+                            resultado.getString("nome"),
+                            resultado.getString("cpf"),
+                            resultado.getString("endereco"),
+                            resultado.getString("senha")
+                    );
+                    meusUsuarios.add(Usuario);
+                }
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException("Query de select (GetAll) incorreta");
+        } finally {
+            conexao.closeConexao();
+        }
+        return meusUsuarios;
     }
 
 }

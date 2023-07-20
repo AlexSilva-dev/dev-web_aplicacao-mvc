@@ -79,7 +79,6 @@ public class ComentarioDAO implements Dao<Comentario> {
             sql.setInt(3, t.getIdusuario());
             sql.setInt(4, t.getIdcategoria());
             sql.setInt(5, t.getId());
-            
 
             sql.executeUpdate();
 
@@ -117,7 +116,7 @@ public class ComentarioDAO implements Dao<Comentario> {
             ResultSet resultado = preparedStatement.executeQuery();
             if (resultado != null) {
                 while (resultado.next()) {
-                    Comentario Comentario = new Comentario(resultado.getInt("id"),resultado.getString("COMENTARIO"),
+                    Comentario Comentario = new Comentario(resultado.getInt("id"), resultado.getString("COMENTARIO"),
                             resultado.getString("data"),
                             resultado.getInt("idusuario"),
                             resultado.getInt("idcategoria")
@@ -131,5 +130,19 @@ public class ComentarioDAO implements Dao<Comentario> {
             conexao.closeConexao();
         }
         return meusComentarios;
+    }
+
+    public void ExcluirComentarioAssociado(int idUsuario) {
+        Conexao conexao = new Conexao();
+        try {
+            PreparedStatement sql = conexao.getConexao().prepareStatement("DELETE FROM comentarios WHERE idusuario = ? ");
+            sql.setInt(1, idUsuario);
+            sql.executeUpdate();
+
+        } catch (SQLException e) {
+            throw new RuntimeException("Query de delete (excluir comentario associado) incorreta");
+        } finally {
+            conexao.closeConexao();
+        }
     }
 }

@@ -22,9 +22,9 @@ public class LogoutController extends HttpServlet {
 
         HttpSession session = request.getSession();
         session.invalidate();
-        
-       response.sendRedirect("/aplicacaoMVC/home?acao=home");
-  
+
+        response.sendRedirect("/aplicacaoMVC/home?acao=home");
+
     }
 
 }
