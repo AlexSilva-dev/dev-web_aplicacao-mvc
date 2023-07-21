@@ -48,7 +48,15 @@
 
                                 <%
                                     ArrayList<Categoria> listaCategoria = (ArrayList<Categoria>) request.getAttribute("listaCategoria");
-                                    listaCategoria.remove(cat);
+
+                                    
+                                    for (Categoria catr : listaCategoria) {
+                                        if (catr.getId() == cat.getId()) {
+                                            int index = listaCategoria.indexOf(catr);
+                                            listaCategoria.remove(index);
+                                            break;
+                                        }
+                                    }
                                 %>
 
                                 <option value='<%=cat.getId()%>'>
