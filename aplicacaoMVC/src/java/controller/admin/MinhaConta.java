@@ -107,6 +107,18 @@ public class MinhaConta extends HttpServlet {
                 String senha = request.getParameter("senha");
                 String senha2 = request.getParameter("senha2");
 
+                if (senha2.equals("") || nome == null || nome.equals("") || end == null || end.equals("") || cpf == null || cpf.equals("") || senha == null || senha.equals("") || senha2 == null) {
+                    
+                    Usuario usuario = (Usuario) ((HttpServletRequest) request).getSession().getAttribute("usuario");
+                    request.setAttribute("usuario", usuario);
+                    RequestDispatcher rd;
+                    request.setAttribute("msgError", "Todos os campos precisam ser preenchidos");
+                    request.setAttribute("link", "home");
+                    rd = request.getRequestDispatcher("/views/admin/usuario/alterar-dados.jsp");
+                    rd.forward(request, response);
+                    return;
+                }
+
                 if (senha.equals(senha2)) {
 
                     Usuario usuAlt = new Usuario();
